@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.M.E | The Experience | Curated Baltimore Events</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --gray: #1A1A1A;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        body { background-color: var(--black); color: var(--white); }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1514525253344-a8135a43c33f?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid var(--gold);
+        }
+        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); letter-spacing: 10px; color: var(--gold); text-transform: uppercase; }
+        .hero p { font-size: 1.2rem; letter-spacing: 2px; margin: 20px 0; max-width: 600px; opacity: 0.8; }
+        .btn-gold {
+            padding: 15px 40px;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .btn-gold:hover { background: var(--gold); color: var(--black); }
+        .content { padding: 100px 20px; text-align: center; max-width: 1000px; margin: 0 auto; }
+        .footer-hub { background: var(--gray); padding: 40px; text-align: center; border-top: 1px solid #333; }
+        .footer-hub a { color: var(--gold); text-decoration: none; margin: 0 15px; font-size: 0.8rem; opacity: 0.6; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>T.M.E</h1>
+        <p>THE EXPERIENCE | CURATED MOMENTS | COMMUNITY CONNECTIONS</p>
+        <a href="https://BMOREFoodies.com" class="btn-gold">Explore the Culture</a>
+    </section>
+    <section class="content">
+        <h2>From Digital to Real-Life</h2>
+        <p>T.M.E is the physical manifestation of the culture discovered on <strong>BMOREFoodies</strong>.</p>
+    </section>
+    <div class="footer-hub">
+        <p style="margin-bottom: 20px; font-size: 0.7rem; letter-spacing: 2px;">K1UNIVERSAL ECOSYSTEM</p>
+        <a href="https://BMOREFoodies.com">BMOREFOODIES</a>
+        <a href="https://SheStacksIT.com">SHESTACKSIT</a>
+    </div>
+</body>
+</html>
