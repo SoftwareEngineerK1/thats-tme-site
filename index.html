@@ -13,14 +13,13 @@
             --gray: #1A1A1A;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-        body { background-color: var(--black); color: var(--white); }
+        body { background-color: var(--black); color: var(--white); overflow-x: hidden; }
         
+        /* VIDEO BACKGROUND STYLING */
         .hero {
+            position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1514525253344-a8135a43c33f?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover;
-            background-position: center;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -28,12 +27,43 @@
             text-align: center;
             padding: 20px;
             border-bottom: 2px solid var(--gold);
+            overflow: hidden;
+        }
+
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+            filter: brightness(40%); /* Dims video to make text pop */
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Extra layer of darkness */
+            z-index: -1;
         }
         
-        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); letter-spacing: 10px; color: var(--gold); text-transform: uppercase; }
-        .hero p { font-size: 1.2rem; letter-spacing: 2px; margin: 20px 0; max-width: 600px; opacity: 0.8; }
+        .hero h1 { 
+            font-size: clamp(3rem, 10vw, 6rem); 
+            letter-spacing: 10px; 
+            color: var(--gold); 
+            text-transform: uppercase;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p { font-size: 1.2rem; letter-spacing: 2px; margin: 20px 0; max-width: 600px; opacity: 0.9; }
         
-        /* Button Container for spacing */
         .cta-container {
             display: flex;
             gap: 20px;
@@ -51,11 +81,12 @@
             font-weight: bold;
             letter-spacing: 2px;
             transition: 0.3s;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
         }
 
         .btn-gold:hover { background: var(--gold); color: var(--black); }
         
-        /* Secondary style for less emphasis than the primary profile builder */
         .btn-outline {
             padding: 15px 40px;
             border: 2px solid var(--white);
@@ -65,33 +96,39 @@
             font-weight: bold;
             letter-spacing: 2px;
             transition: 0.3s;
-            opacity: 0.7;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
         }
-        .btn-outline:hover { opacity: 1; background: var(--white); color: var(--black); }
+        .btn-outline:hover { background: var(--white); color: var(--black); }
 
         .content { padding: 100px 20px; text-align: center; max-width: 1000px; margin: 0 auto; }
         .content h2 { color: var(--gold); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; }
-        .content p { line-height: 1.8; opacity: 0.9; }
 
         .footer-hub { background: var(--gray); padding: 40px; text-align: center; border-top: 1px solid #333; }
         .footer-hub a { color: var(--gold); text-decoration: none; margin: 0 15px; font-size: 0.8rem; opacity: 0.6; }
     </style>
 </head>
 <body>
+
     <section class="hero">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-cheers-with-drinks-at-a-party-4007-large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+
         <h1>T.M.E</h1>
         <p>THE EXPERIENCE | CURATED MOMENTS | COMMUNITY CONNECTIONS</p>
         
         <div class="cta-container">
             <a href="profile_builder.html" class="btn-gold">Join the Insider Network</a>
-            
             <a href="https://BMOREFoodies.com" class="btn-outline">Explore the Culture</a>
         </div>
     </section>
 
     <section class="content">
         <h2>From Digital to Real-Life</h2>
-        <p>T.M.E is the physical manifestation of the culture discovered on <strong>BMOREFoodies</strong>. We bridge the gap between digital discovery and curated physical experiences. By joining our network, you're not just attending an event—you're entering a curated collective designed for connection.</p>
+        <p>T.M.E is the physical manifestation of the culture discovered on <strong>BMOREFoodies</strong>. We bridge the gap between digital discovery and curated physical experiences.</p>
     </section>
 
     <div class="footer-hub">
@@ -100,5 +137,6 @@
         <a href="https://SheStacksIT.com">SHESTACKSIT</a>
         <a href="profile_builder.html">SUBSCRIBE (T.M.E)</a>
     </div>
+
 </body>
 </html>
