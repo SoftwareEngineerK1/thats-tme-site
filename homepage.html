@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T.M.E | The Melanin Experience</title>
+    <title>T.M.E | Home</title>
     <style>
-        :root {
-            --gold: #D4AF37;
-            --black: #0A0A0A;
-            --white: #FFFFFF;
-        }
+        :root { --gold: #D4AF37; --black: #0A0A0A; --white: #FFFFFF; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', sans-serif; }
-        body { background-color: var(--black); color: var(--white); overflow-x: hidden; }
+        body { background: var(--black); color: var(--white); overflow-x: hidden; }
+
+        /* UNIFIED NAV */
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 30px 40px;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+        nav a { color: var(--white); text-decoration: none; margin-left: 25px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--gold); }
 
         .hero {
             position: relative;
@@ -21,7 +29,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            border-bottom: 2px solid var(--gold);
         }
 
         #bg-video {
@@ -34,12 +41,8 @@
             filter: brightness(30%);
         }
 
-        .nav-links { position: absolute; top: 30px; right: 40px; }
-        .nav-links a { color: var(--white); text-decoration: none; margin-left: 20px; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; }
-        .nav-links a:hover { color: var(--gold); }
-
-        h1 { font-size: clamp(4rem, 12vw, 8rem); letter-spacing: 15px; color: var(--gold); }
-        p.tagline { font-size: 1.2rem; letter-spacing: 4px; margin: 10px 0 40px; opacity: 0.8; }
+        h1 { font-size: clamp(4rem, 12vw, 8rem); letter-spacing: 15px; color: var(--gold); margin-bottom: 10px; }
+        .tagline { font-size: 1.2rem; letter-spacing: 4px; margin-bottom: 40px; opacity: 0.8; }
 
         .btn-gold {
             padding: 18px 45px;
@@ -54,7 +57,6 @@
         }
         .btn-gold:hover { background: var(--gold); color: var(--black); }
 
-        /* FLASHING TEXT STYLE */
         .coming-soon {
             margin-top: 50px;
             font-size: 1rem;
@@ -62,18 +64,12 @@
             color: var(--gold);
             text-transform: uppercase;
             animation: flash 1.5s infinite;
-            font-weight: bold;
         }
-
-        @keyframes flash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.2; }
-        }
+        @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
     </style>
 </head>
 <body>
-
-    <nav class="nav-links">
+    <nav>
         <a href="homepage.html">Home</a>
         <a href="about_us.html">About</a>
         <a href="profile_builder.html">Join</a>
@@ -83,14 +79,10 @@
         <video autoplay muted loop playsinline id="bg-video">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-cheers-with-drinks-at-a-party-4007-large.mp4" type="video/mp4">
         </video>
-
         <h1>T.M.E</h1>
         <p class="tagline">THE MELANIN EXPERIENCE</p>
-        
         <a href="profile_builder.html" class="btn-gold">Get Exclusive Access</a>
-
         <div class="coming-soon">More Experiences Coming Soon</div>
     </section>
-
 </body>
 </html>
