@@ -14,6 +14,7 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         body { background-color: var(--black); color: var(--white); }
+        
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
@@ -28,8 +29,19 @@
             padding: 20px;
             border-bottom: 2px solid var(--gold);
         }
+        
         .hero h1 { font-size: clamp(3rem, 10vw, 6rem); letter-spacing: 10px; color: var(--gold); text-transform: uppercase; }
         .hero p { font-size: 1.2rem; letter-spacing: 2px; margin: 20px 0; max-width: 600px; opacity: 0.8; }
+        
+        /* Button Container for spacing */
+        .cta-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
         .btn-gold {
             padding: 15px 40px;
             border: 2px solid var(--gold);
@@ -40,8 +52,27 @@
             letter-spacing: 2px;
             transition: 0.3s;
         }
+
         .btn-gold:hover { background: var(--gold); color: var(--black); }
+        
+        /* Secondary style for less emphasis than the primary profile builder */
+        .btn-outline {
+            padding: 15px 40px;
+            border: 2px solid var(--white);
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            opacity: 0.7;
+        }
+        .btn-outline:hover { opacity: 1; background: var(--white); color: var(--black); }
+
         .content { padding: 100px 20px; text-align: center; max-width: 1000px; margin: 0 auto; }
+        .content h2 { color: var(--gold); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; }
+        .content p { line-height: 1.8; opacity: 0.9; }
+
         .footer-hub { background: var(--gray); padding: 40px; text-align: center; border-top: 1px solid #333; }
         .footer-hub a { color: var(--gold); text-decoration: none; margin: 0 15px; font-size: 0.8rem; opacity: 0.6; }
     </style>
@@ -50,16 +81,24 @@
     <section class="hero">
         <h1>T.M.E</h1>
         <p>THE EXPERIENCE | CURATED MOMENTS | COMMUNITY CONNECTIONS</p>
-        <a href="https://BMOREFoodies.com" class="btn-gold">Explore the Culture</a>
+        
+        <div class="cta-container">
+            <a href="profile_builder.html" class="btn-gold">Join the Insider Network</a>
+            
+            <a href="https://BMOREFoodies.com" class="btn-outline">Explore the Culture</a>
+        </div>
     </section>
+
     <section class="content">
         <h2>From Digital to Real-Life</h2>
-        <p>T.M.E is the physical manifestation of the culture discovered on <strong>BMOREFoodies</strong>.</p>
+        <p>T.M.E is the physical manifestation of the culture discovered on <strong>BMOREFoodies</strong>. We bridge the gap between digital discovery and curated physical experiences. By joining our network, you're not just attending an event—you're entering a curated collective designed for connection.</p>
     </section>
+
     <div class="footer-hub">
         <p style="margin-bottom: 20px; font-size: 0.7rem; letter-spacing: 2px;">K1UNIVERSAL ECOSYSTEM</p>
         <a href="https://BMOREFoodies.com">BMOREFOODIES</a>
         <a href="https://SheStacksIT.com">SHESTACKSIT</a>
+        <a href="profile_builder.html">SUBSCRIBE (T.M.E)</a>
     </div>
 </body>
 </html>
