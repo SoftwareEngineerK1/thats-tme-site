@@ -32,51 +32,137 @@
     </nav>
 
     <div class="form-card">
-        <form id="profileForm" name="tme-onboarding" method="POST" data-netlify="true" action="/profile_builder.html">
-            <input type="hidden" name="form-name" value="tme-onboarding" />
+    <header><h1>T.M.E</h1></header>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+    <form id="newsletterForm" name="tme-onboarding" method="POST" data-netlify="true" action="/profile_builder.html">
+        <input type="hidden" name="form-name" value="tme-onboarding" />
+
+        <div class="step active" id="step1">
+            <label>The Basics</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" name="full_name" id="name" placeholder="Full Name" required>
+                <input type="text" name="zipcode" id="zipcode" placeholder="Zip Code" required style="width: 30%;">
+            </div>
+            <input type="email" name="email" id="email" placeholder="Email Address" required style="margin-top: 10px;">
             
-            <div class="step active" id="step1">
-                <label>Full Name</label>
-                <input type="text" name="full_name" id="name" required>
-                <label>Email</label>
-                <input type="email" name="email" id="email" required>
-                <label>Zip Code</label>
-                <input type="text" name="zip" id="zip">
-                <button type="button" class="btn-nav" onclick="nextStep(2)">Next</button>
+            <label>Birthday</label>
+            <input type="date" name="birthday" id="birthday">
+
+            <button type="button" class="btn-nav" onclick="nextStep(2)">Next: Interests</button>
+        </div>
+
+        <div class="step" id="step2">
+            <label>Experience Categories</label>
+            <div class="grid-container" id="categoryGrid"></div>
+            
+            <label>Vibe & Format</label>
+            <div class="grid-container" id="formatGrid"></div>
+
+            <button type="button" class="btn-nav" onclick="nextStep(1)">Back</button>
+            <button type="button" class="btn-nav" onclick="nextStep(3)">Next: Preferences</button>
+        </div>
+
+        <div class="step" id="step3">
+            <label>When do you want to go out?</label>
+            <div class="grid-container" id="dateGrid"></div>
+
+            <label>Preferred Time of Day</label>
+            <div class="grid-container" id="timeGrid"></div>
+
+            <label>How often do you like to go out?</label>
+            <select name="frequency" id="frequency">
+                <option value="Daily">Every Day</option>
+                <option value="Few times a week">A few times a week</option>
+                <option value="Weekly">Once a week</option>
+                <option value="Bi-weekly">Every other week</option>
+                <option value="Monthly">Once a month</option>
+            </select>
+
+            <button type="button" class="btn-nav" onclick="nextStep(2)">Back</button>
+            <button type="button" class="btn-nav" onclick="nextStep(4)">Next: Logistics</button>
+        </div>
+
+        <div class="step" id="step4">
+            <label>Location Interests</label>
+            <div class="grid-container">
+                <div class="check-item"><input type="checkbox" name="locations" value="Local"> Local</div>
+                <div class="check-item"><input type="checkbox" name="locations" value="State"> State-wide</div>
+                <div class="check-item"><input type="checkbox" name="locations" value="Country"> National (USA)</div>
+                <div class="check-item"><input type="checkbox" name="locations" value="International"> International</div>
             </div>
 
-            <div class="step" id="step2">
-                <label>Interests</label>
-                <div class="grid-container" id="catGrid"></div>
-                <button type="button" class="btn-nav" onclick="nextStep(1)">Back</button>
-                <button type="submit" class="btn-nav btn-submit">Complete</button>
+            <label>Budget Preference</label>
+            <div class="grid-container">
+                <div class="check-item"><input type="checkbox" name="budgets" value="Free"> Free</div>
+                <div class="check-item"><input type="checkbox" name="budgets" value="$"> $ (Budget)</div>
+                <div class="check-item"><input type="checkbox" name="budgets" value="$$"> $$ (Moderate)</div>
+                <div class="check-item"><input type="checkbox" name="budgets" value="$$$"> $$$ (Luxury)</div>
             </div>
-        </form>
-    </div>
 
-    <script>
-        const cats = ["Nightlife", "Art", "Food", "Tech", "Wellness", "Music", "Business", "Fashion"];
-        const grid = document.getElementById('catGrid');
-        cats.forEach(c => {
-            grid.innerHTML += `<div class="check-item"><input type="checkbox" name="categories" value="${c}"> ${c}</div>`;
+            <label>Social Preference</label>
+            <select name="social_pref" id="socialPref">
+                <option value="Independently">Independently</option>
+                <option value="In a Group">In a Group</option>
+                <option value="Both/Depends">Both (Depends on the vibe)</option>
+            </select>
+
+            <button type="button" class="btn-nav" onclick="nextStep(3)">Back</button>
+            <button type="submit" class="btn-nav btn-submit">Complete Profile</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    const categories = ["Sports", "Nightlife", "Restaurants & Eateries", "Events", "Tours", "Comedy", "Family-Friendly", "History & Heritage", "Fairs & Festivals", "Film", "Literature", "Educational", "Food & Drink", "Museums", "Art", "Workshops", "Multicultural", "Fashion", "Professional Development", "Nature & Outdoors", "Wellness", "Charity & Causes", "Community", "Science & Tech", "Spirituality", "Travel & Outdoor"];
+    const formats = ["Business", "Class", "Conference", "Festival", "Party", "Appearance", "Attraction", "Convention", "Expo", "Gala", "Game", "Networking", "Performance", "Race", "Rally", "Retreat", "Screening", "Seminar", "Tournament"];
+    const dateOptions = ["Today", "Tomorrow", "This weekend", "This week", "Next week", "This month", "Next month", "Pick a date..."];
+    const timeOptions = ["Dawn", "Morning", "Noon", "Afternoon", "Evening", "Midnight", "Late Night"];
+
+    function populate(id, items, name) {
+        const container = document.getElementById(id);
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'check-item';
+            div.innerHTML = `<input type="checkbox" name="${name}" value="${item}"> ${item}`;
+            container.appendChild(div);
         });
+    }
 
-        function nextStep(s) {
-            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-            document.getElementById('step' + s).classList.add('active');
-        }
+    populate('categoryGrid', categories, 'categories');
+    populate('formatGrid', formats, 'formats');
+    populate('dateGrid', dateOptions, 'dates');
+    populate('timeGrid', timeOptions, 'times');
 
-        document.getElementById('profileForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            fetch("/profile_builder.html", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString(),
-            }).then(() => {
-                window.location.href = 'thanks_for_joining.html?' + new URLSearchParams(formData).toString();
-            });
+    function nextStep(step) {
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById('step' + step).classList.add('active');
+        document.getElementById('progressFill').style.width = (step * 25) + '%';
+    }
+
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const myForm = e.target;
+        const formData = new FormData(myForm);
+        
+        // Submit to the specific URL of this file
+        fetch("/profile_builder.html", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+        .then(() => {
+            // Success: Redirect to VIP Card
+            const params = new URLSearchParams(formData);
+            window.location.href = 'thanks_for_joining.html?' + params.toString();
+        })
+        .catch((error) => {
+            console.error('Submission error:', error);
+            alert("Connection error. Please try again.");
         });
-    </script>
+    });
+</script>
 </body>
+
 </html>
